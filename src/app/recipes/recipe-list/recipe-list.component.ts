@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Recipe} from "../../models/recipe.model";
+import {RecipeService} from "../../services/recipe.service";
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,22 +8,17 @@ import {Recipe} from "../../models/recipe.model";
   styleUrls: ['./recipe-list.component.scss']
 })
 export class RecipeListComponent implements OnInit {
-  @Output() seletectedRecipeEmitter: EventEmitter<Recipe> = new EventEmitter<Recipe>();
+  recipes: Recipe[];
 
-  recipes: Recipe[] = [
-    new Recipe('Test recipe', 'This is simply a test',
-      'https://www.glutenfreeandmore.com/wp-content/uploads/2018/07/15latkes.jpg'),
-
-    new Recipe('Another recipe', 'This is simply another test',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQAPpyW-dX7WX52D_Ay7P2mdU7d1nPq8qul-w&usqp=CAU')
-  ]
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    this.recipes = this.recipeService.getRecipes();
   }
 
   displayDetails(recipe: Recipe) {
-    this.seletectedRecipeEmitter.emit(recipe);
+    this.recipeService.recipeSelected.emit(recipe);
+    //this.seletectedRecipeEmitter.emit(recipe);
   }
 
 }

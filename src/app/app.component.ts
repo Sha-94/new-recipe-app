@@ -13,15 +13,5 @@ export class AppComponent implements OnInit{
     this.displayShoppingList = false;
     this.displayRecipeList = false;
   }
-
-  toggleDisplay(event: string) {
-    if(event === "Shopping List") {
-      this.displayRecipeList = false;
-      this.displayShoppingList = true;
-    } else {
-      this.displayRecipeList = true;
-      this.displayShoppingList = false;
-    }
-  }
 }
 

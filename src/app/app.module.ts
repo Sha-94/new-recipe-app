@@ -10,7 +10,15 @@ import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/sh
 import { HeaderComponent } from './header/header.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { DropdownDirective } from './directives/dropdown.directive';
+import {RouterModule, Routes} from "@angular/router";
+import { WelcomeComponent } from './welcome/welcome.component';
 
+const appRoutes: Routes = [
+  {path: 'recipes', component: RecipesComponent},
+  {path: 'recipes/detail', component: RecipeDetailComponent},
+  {path: 'shopping-list', component: ShoppingListComponent},
+  {path: 'shopping-list/edit', component: ShoppingListEditComponent},
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,11 +29,13 @@ import { DropdownDirective } from './directives/dropdown.directive';
     ShoppingListEditComponent,
     HeaderComponent,
     RecipesComponent,
-    DropdownDirective
+    DropdownDirective,
+    WelcomeComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(appRoutes)
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

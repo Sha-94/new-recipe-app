@@ -2,10 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf="!displayShoppingList; else shoppingListComponent "></app-recipes>
+      <router-outlet></router-outlet>
+      <!--<app-recipes *ngIf="!displayShoppingList; else shoppingListComponent "></app-recipes>
       <ng-template #shoppingListComponent>
         <app-shopping-list></app-shopping-list>
-      </ng-template>
+      </ng-template>-->
     </div>
   </div>
 </div>
